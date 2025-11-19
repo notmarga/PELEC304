@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>User Registration</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
 
-<div class="container mt-5" style="max-width: 500px;">
-    <h2 class="text-center text-primary mb-4">Register Account</h2>
+<h2>Register Account</h2>
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
+{% if messages %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+{% endif %}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
 
-        <button class="btn btn-primary w-100 mt-3">Register</button>
-    </form>
-
-    <p class="text-center mt-3">
-        Already have an account? <a href="{% url 'login_user' %}">Login</a>
-    </p>
-</div>
+<p>
+    Already have an account? <a href="{% url 'login_user' %}">Login</a>
+</p>
 
 </body>
 </html>
